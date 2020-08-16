@@ -1,3 +1,5 @@
+import { SignInComponent } from './shared/sign-in/sign-in.component';
+import { SigninModalComponent } from './shared/signin-modal/signin-modal.component';
 import { AdminDashboardComponent } from './user/admin-dashboard/admin-dashboard.component';
 import { BookVehicleComponent } from './booking/book-vehicle/book-vehicle.component';
 import { HomeComponent } from './home/home/home.component';
@@ -14,7 +16,14 @@ const routes: Routes = [
   {
     path:'book-vehicle',
     pathMatch:'full',
-    component:BookVehicleComponent
+    component:BookVehicleComponent,
+    children:[
+      {
+        path:'**',
+        pathMatch:'full',
+        component:HomeComponent, 
+      }
+    ]
   },
   {
     path:'add-vehicle',
@@ -25,6 +34,16 @@ const routes: Routes = [
     path:'admin-dashboard',
     pathMatch:'full',
     component:AdminDashboardComponent
+  },
+  {
+    path:'signin',
+    pathMatch:'full',
+    component:SignInComponent
+  },
+  {
+    path:'signin-modal',
+    pathMatch:'full',
+    component:SigninModalComponent
   },
   {
     path:'**',
